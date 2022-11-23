@@ -1,0 +1,14 @@
+{
+    "mixers": [
+      {
+          "input": [
+              "./prisma/modules/base.prisma",
+              "./prisma/modules/Seeder/P_Info.prisma",
+              "./prisma/modules/Seeder/P_JmsAdvanceSetting.prisma",
+              "./prisma/modules/Seeder/P_UserInfo.prisma",
+              "./prisma/modules/Company/CompanyInfo.prisma"
+          ],
+          "output": "prisma/schema.prisma"
+      }
+    ]
+  }

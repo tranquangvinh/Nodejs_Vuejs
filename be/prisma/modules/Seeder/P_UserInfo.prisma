@@ -1,0 +1,46 @@
+datasource db {
+	provider = "mysql"
+	url = env("DATABASE_URL")
+}
+model P_UserInfo {
+  StaffCode                String    @id @db.Char(8)
+  RegistCommit             String    @db.Char(1)
+  JmsSuspensionFlag        String    @db.Char(1)
+  Password                 String    @db.VarChar(20)
+  AccessCount              Int
+  OperateClassComCode      String?   @db.Char(3)
+  OperateClassWebCode      String?   @db.Char(3)
+  OperateClassRemark       String?   @db.VarChar(60)
+  BranchCode               String?   @db.Char(2)
+  EmployeeCode             String?   @db.Char(8)
+  TempFlag                 String    @db.Char(1)
+  IntroductionFlag         String    @db.Char(1)
+  TempToPermFlag           String    @db.Char(1)
+  NewJohoMailFlag          String    @db.Char(1)
+  MailMagazineFlag         String    @db.Char(1)
+  SuspensionFlag           String    @db.Char(1)
+  ErasureFlag              String    @db.Char(1)
+  OfferFlag                String    @db.Char(1)
+  HopeUseFlag              String    @db.Char(1)
+  NaviUseFlag              String    @db.Char(1)
+  HomeContactFlag          String    @db.Char(1)
+  PortableContactFlag      String    @db.Char(1)
+  FaxContactFlag           String    @db.Char(1)
+  MailContactFlag          String    @db.Char(1)
+  ReferRejectFlag          String    @db.Char(1)
+  PersonDangerFlag         String    @db.Char(1)
+  PriorityJobTypeFlag      String    @db.Char(1)
+  PriorityIndustryTypeFlag String    @db.Char(1)
+  PriorityWorkingTypeFlag  String    @db.Char(1)
+  PriorityWorkingPlaceFlag String    @db.Char(1)
+  PriorityStationFlag      String    @db.Char(1)
+  PriorityWorkingTimeFlag  String    @db.Char(1)
+  PrioritySalaryFlag       String    @db.Char(1)
+  HopeCommuteTime          Int?      @db.TinyInt
+  NoticeMailFlag           String?   @db.Char(1)
+  LastAccessDay            DateTime  @db.DateTime()
+  LisReserveDay            DateTime? @db.DateTime()
+  LisRegistDay             DateTime? @db.DateTime()
+  RegistDay                DateTime  @default(now())
+  UpdateDay                DateTime  @updatedAt
+}
