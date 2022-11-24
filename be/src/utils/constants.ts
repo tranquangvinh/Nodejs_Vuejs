@@ -6,6 +6,12 @@ const StatusApi = {
 };
 const HOST = {
   PORT: 8080,
-  URL: "http://localhost:8080"
+  URL: "http://localhost:8080",
 };
-export { StatusApi, HOST };
+
+const AUTHENTICATE = {
+  SECRET_KEY: "SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+  EXPIRES_IN: "2h",
+};
+
+export { StatusApi, HOST, AUTHENTICATE };

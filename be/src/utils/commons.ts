@@ -1,5 +1,5 @@
 import { StatusApi } from "./constants";
-import { Response } from "express";
+import { Response, Request } from "express";
 
 /**
  * handle response success
@@ -34,4 +34,19 @@ const responseFailure = (
   return res.status(status).json(results);
 };
 
-export { responseSuccess, responseFailure };
+/**
+ * handle get token from header
+ * @param req
+ * @returns
+ */
+const getToken = (req: Request) => {
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[0] === "Bearer"
+  ) {
+    return req.headers.authorization.split(" ")[1];
+  }
+  return null;
+};
+
+export { responseSuccess, responseFailure, getToken};

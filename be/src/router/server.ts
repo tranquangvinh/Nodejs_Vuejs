@@ -2,8 +2,7 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { HOST } from "../utils/constants";
-import authRouter from '../auth/auth.routes'
-
+import router from './auth/index';
 dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || HOST.PORT;
@@ -20,10 +19,9 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/auth', authRouter);
+app.use('/auth', router);
 
 app.use((err:any, req:any, res:any) => {
-	console.log(err.stack);
 	res.status(err.status || 500).send(err.message);
 });
 
