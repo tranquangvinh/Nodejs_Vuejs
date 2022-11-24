@@ -2,6 +2,12 @@
 
 <template>
   <main>
+    <div class="relative w-full h-500px">
+      <img
+          class="absolute w-full h-full t-0"
+          :src="bannerPC"
+      />
+    </div>
     <a-button type="primary" class="w-full h-38px" :loading="iconLoading" @click="onSubmit">
       LogOut
     </a-button>
@@ -11,6 +17,7 @@
 import {ref} from "vue";
 import {useUserStore} from "@/stores/user";
 import router from "@/router";
+import bannerPC from '@/assets/img/banner-pc-1.jpg';
 
 const iconLoading = ref(false);
 const {setInfoUser} = useUserStore();
