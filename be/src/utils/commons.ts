@@ -1,5 +1,5 @@
 import { StatusApi } from "./constants";
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 
 /**
  * handle response success
@@ -49,4 +49,25 @@ const getToken = (req: Request) => {
   return null;
 };
 
-export { responseSuccess, responseFailure, getToken};
+/**
+ * handle validate for schema
+ * @param req
+ * @param res
+ * @param next
+ * @returns
+ */
+const validate =
+  (schema: any) => async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await schema.validate({
+        body: req.body,
+        query: req.query,
+        params: req.params,
+      });
+      return next();
+    } catch (err: any) {
+      return res.status(500).json({ type: err.name, message: err.message });
+    }
+  };
+
+export { responseSuccess, responseFailure, getToken, validate };
